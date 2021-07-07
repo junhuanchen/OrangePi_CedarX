@@ -24,15 +24,20 @@ git clone https://github.com/OrangePiLibra/OrangePi_Cedarx.git
 sudo apt-get install -y gcc-arm-linux-gnueabi
   ```
 
+// arm-cortexa9-linux-gnueabihf-4.9.3-20160512.tar.xz
+
 * Compile cedarx on Host PC
 
   When we get source code of Cedarx, we should comile first, as follow:
   Note! The "CURRENT_PATH" is path of "OrangePi_CedarX".
   ```
+  
 cd OrangePi_Cedarx/cedarx
 ./bootstrap
 
-./configure --host=arm-linux-gnueabi  CFLAGS="-D__ENABLE_ZLIB__" CPPFLAGS="-D__ENABLE_ZLIB__" LDFLAGS="-lcrypto -lz -L${CURRENT_PATH}/OrangePi_CedarX/cedarx/external/lib32/arm-linux-gnueabi -L${CURRENT_PATH}/OrangePi_CedarX/libcedarc/library/lib32/linuxgnueabi_3.10/" --prefix=${CURRENT_PATH}/OrangePi_CedarX/output
+./configure --host=arm-none-linux-gnueabihf CC=/home/dls/CedarX/4.9.3/bin/arm-none-linux-gnueabihf-gcc CXX=/home/dls/CedarX/4.9.3/bin/arm-none-linux-gnueabihf-g++ CFLAGS="-D__ENABLE_ZLIB__" CPPFLAGS="-D__ENABLE_ZLIB__" LDFLAGS="-lcrypto -lz -L${CURRENT_PATH}/OrangePi_CedarX/cedarx/external/lib32/arm-linux-gnueabihf -L${CURRENT_PATH}/OrangePi_CedarX/libcedarc/library/lib32/gnueabihf_3.10/" --prefix=${CURRENT_PATH}/OrangePi_CedarX/output
+
+./configure --host=arm-linux-gnueabihf CFLAGS="-D__ENABLE_ZLIB__" CPPFLAGS="-D__ENABLE_ZLIB__" LDFLAGS="-lcrypto -lz -L${CURRENT_PATH}/OrangePi_CedarX/cedarx/external/lib32/arm-linux-gnueabihf -L${CURRENT_PATH}/OrangePi_CedarX/libcedarc/library/lib32/gnueabihf_3.10/" --prefix=${CURRENT_PATH}/OrangePi_CedarX/output
 
 make
 
@@ -79,8 +84,12 @@ sudo ./OrangePi_CedarX.sh
   ```
   At last, please export dynatic shared library:
   ```
-export LD_LIBRARY_PATH=/home/orangepi/CedarX/arm-linux-gnueabi:/home/orangepi/CedarX/output/lib:/home/orangepi/CedarX/linuxgnueabi_3.10:/usr/arm-linux-gnueabi/lib/
+export LD_LIBRARY_PATH=/home/pi/OrangePi_CedarX/cedarx/external/lib32/arm-linux-gnueabihf:/home/pi/OrangePi_CedarX/output/lib:/home/pi/OrangePi_CedarX/cedarx/gnueabihf_3.10:/home/pi/OrangePi_CedarX/libcedarc/library/lib32/gnueabihf_3.10
   ```
+export LD_LIBRARY_PATH=~/OrangePi_CedarX/output/lib/:
+
+
+
 
 * Running demo code
 

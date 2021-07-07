@@ -2366,8 +2366,10 @@ _endTask:
                 }
                 else
                 {
-                    sprintf(demux->shiftedTimeUrl, "%s&starttime=%s",
+                    char tmp[5120] = "";
+                    sprintf(tmp, "%s&starttime=%s",
                             demux->shiftedTimeUrl, TimeStr);
+                    strcpy(demux->shiftedTimeUrl, tmp);
                 }
             }
             else

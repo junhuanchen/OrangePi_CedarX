@@ -19,7 +19,7 @@
 #include <pthread.h>
 
 #include <alsa/asoundlib.h>
-#define ORANGEPI_DEBUG
+// #define ORANGEPI_DEBUG
 
 
 enum SDSTATUS
